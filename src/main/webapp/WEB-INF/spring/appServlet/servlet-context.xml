@@ -14,29 +14,42 @@
 
 	<interceptors>
        <interceptor>
-           <mapping path="/pros/**"/>
+           <mapping path="/worrior/**"/>
            <exclude-mapping path="/**/**/*.ajax"/>
-           <beans:bean id="prosInterceptor" class="pros.common.controller.ProsInterceptor"/>
+           <beans:bean id="worriorInterceptor" class="worrior.common.controller.WorriorInterceptor"/>
        </interceptor>
        
-       <interceptor>
-           <mapping path="/**/**/*.api"/>
-           <beans:bean id="prosApiInterceptor" class="pros.common.controller.ProsApiInterceptor"/>
-       </interceptor>
+<!--        <interceptor> -->
+<!--            <mapping path="/api/**"/> -->
+<!--            <beans:bean id="worriorApiInterceptor" class="worrior.common.controller.ProsApiInterceptor"/> -->
+<!--        </interceptor> -->
        
     </interceptors>
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
-	<context:component-scan base-package="com.pros.worrior" />
-	
-	
-	
+
+	<!-- <context:component-scan base-package="com.tuenti7.controller" /> -->
+	<context:component-scan base-package="worrior" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0" />
+	</beans:bean>
+	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<beans:property name="contentType" value="application/json;charset=UTF-8">
+		</beans:property>
+	</beans:bean>
+
+	 
 </beans:beans>

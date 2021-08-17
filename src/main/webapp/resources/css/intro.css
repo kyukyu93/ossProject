@@ -1,0 +1,321 @@
+/* 2020.11.14 */
+/* 2020.11.14 update */
+/* common */
+
+* {
+	margin: 0 auto;
+	padding: 0;
+	word-break: break-all;
+	box-sizing: border-box;
+	max-width: 1200px;
+}
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;	
+	display: block;
+	background-color: white;
+}
+
+div {
+	display: block;
+}
+
+/* 2020.11.14 */
+/* 2020.11.14 update */
+/* navigation */
+
+.nav-bar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 100;
+	background-color: white;
+	flex-flow : row nowrap;
+	display: flex;
+	align-items: center;
+	padding: .5rem 1rem;
+}
+
+.nav-brand {
+	color: #000000;
+	display: inline-block;
+	margin-right: 1rem;
+	font-size: 1.25rem;
+	text-decoration: none;
+}
+
+.nav-contents {
+	display: flex;
+	flex-grow: 1;
+}
+
+.nav-items {
+	display: flex;
+	list-style: none;
+	margin-left: 0;
+	padding: 10px 0px;
+}
+.nav-link {
+	color: #353535;
+	text-decoration: none;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+}
+
+.opened {
+	color: #000000;
+	font-style: bold;
+}
+
+.nav-user {
+	margin: 0;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+li.nav-item {
+}
+
+/* 2020.11.14 */
+/* 2020.11.14 update */
+/* button */
+
+.btn-green {
+	display: inline-block;
+	font-weight: 350;
+	text-align: center;
+	vertical-align: middle;
+	background-color: transparent;
+	border: 1px solid transparent;
+	color: green;
+	border-color: green;
+	padding: 0.5rem 0.8rem;
+}
+
+.btn-white {
+	display: inline-block;
+	font-weight: 350;
+	text-align: center;
+	vertical-align: middle;
+	background-color: transparent;
+	border: 1px solid transparent;
+	color: white;
+	border-color: white;
+	padding: 0.5rem 0.8rem;
+}
+
+.btn-black {
+	display: inline-block;
+	font-weight: 350;
+	text-align: center;
+	vertical-align: middle;
+	background-color: transparent;
+	border: 1px solid transparent;
+	color: black;
+	border-color: black;
+	padding: 0.5rem 0.8rem;
+}
+
+/* 2020.11.14 */
+/* 2020.11.14 update */
+/* main */
+
+.main {
+	display: block;
+	margin-top: 50px;
+}
+
+.block-area {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin : 0 auto;
+	height:41px;
+}
+/* 2020.11.14 */
+/* 2020.11.14 update */
+/* carousel */
+
+.carousel {
+	position: relative;
+	margin-bottom: 4rem;
+	height: 512px;
+}
+
+.carousel-items {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	height: 512px;
+}
+
+.carousel-item {
+/* 	position: relative; */
+/* 	display: none; */
+/* 	float: left; */
+/* 	height: 512px; */
+}
+
+.carousel-item > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 32rem;
+	width: 100%;
+	vertical-align: middle;
+	border-style: none; 
+}
+
+.carousel-text {
+	position: absolute;
+	right: 15%;
+	bottom: 20px;
+	left: 15%;
+	z-index: 5;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;	
+}
+
+.carousel-info-left {
+	text-align: left;
+}
+
+/* 2020.11.15 */
+/* 2020.11.15 update */
+/* intro */
+
+.intro-icons {
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.icons-header {
+	text-align: center;
+	margin-bottom: 100px;
+}
+
+.icons-header h2{
+	margin-bottom:30px;
+	color: #0d3657;
+}
+
+.icons-header p {
+	text-align: center;
+}
+
+.icons-div {
+	width: 25%;
+	float: left;
+	position: relative;
+}
+
+.icons-item {
+	margin-bottom: 60px;
+	padding: 0 14px;
+	text-align: center;
+}
+
+.icons-item h3 {
+	font-size: 13px;
+	font-weight: 600;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.icons-item p {
+	color: #7e848e;
+	font-weight: 200;
+	font-size: 15px;
+	margin: 0;
+}
+
+.icon-img {
+	width: 80px;
+	height: 80px;
+}
+
+.icons-divider {
+	border:0;
+	border-top: 1px solid #99afc8;
+	width: 50%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+.intro-area {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.intro-row {
+	display: flex;
+/* 	flex-wrap: wrap; */
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.intro-text {
+	max-width: 60%;
+	margin: auto;
+}
+
+.intro-text-head {
+	margin-top: 15px;
+	font-size: 30px;
+	line-height: 1;
+}
+
+.intro-text-highlight {
+	color: #4767a3;
+}
+
+.intro-text-body {
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+.intro-divider {
+	margin: 30px 0;
+	border: 0;
+	border-top: 1px solid #99afc8;
+}
+
+.rightarea {
+	order: 2;
+/* 	margin-left:0px; */
+}
+
+.intro-image {
+	width: 300px;
+	height: 300px;
+}
+
+.intro-image-div {
+	margin:0 58px;
+}
+
+.alert {
+	color: red;
+	font-size: 0.8em;
+}
+
+h3 a {
+	text-decoration: none;
+	color: black;
+}
+
+/**
+ *
+ */
+ 
+ 
+ 
