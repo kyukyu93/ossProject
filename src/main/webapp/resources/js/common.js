@@ -21,23 +21,23 @@ request_ajax = function(requestUrl, parameter, functionCallBack){
 			}
 	    }
 	    ,beforeSend:function(){
-	    	//$('healther_loading').fadeIn(200);
+	    	//$('worrior_loading').fadeIn(200);
 	        
-	    	//$(".healther_loading").fadeTo(1000,1);
-	    	//$('.healther_loading').removeClass('hide_bg');
+	    	//$(".worrior_loading").fadeTo(1000,1);
+	    	//$('.worrior_loading').removeClass('hide_bg');
 
-	    	$(".healther_loading").fadeTo(1000, 1, function() {
-	    		$('.healther_loading').removeClass('hide_bg');
-	    		$('.healther_loading').show();
+	    	$(".worrior_loading").fadeTo(1000, 1, function() {
+	    		$('.worrior_loading').removeClass('hide_bg');
+	    		$('.worrior_loading').show();
 			});
 	    }
 	    ,complete:function(){
-	    	$(".healther_loading").fadeTo(1000, 0, function() {
-	    		$('.healther_loading').addClass('hide_bg');
-	    		$('.healther_loading').hide();
+	    	$(".worrior_loading").fadeTo(1000, 0, function() {
+	    		$('.worrior_loading').addClass('hide_bg');
+	    		$('.worrior_loading').hide();
 			});
-	    	//$(".healther_loading").fadeTo(1000,0);
-	    	//$('.healther_loading').addClass('hide_bg');
+	    	//$(".worrior_loading").fadeTo(1000,0);
+	    	//$('.worrior_loading').addClass('hide_bg');
 	    }
 	    ,error:function(e){
 	    }

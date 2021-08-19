@@ -59,8 +59,8 @@ public class ProsApiInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 		// TODO Auto-generated method stub
-		log.error("error : " + handler);
-		log.error("error : " + ex.getClass());
+//		log.error("error : " + handler);
+//		log.error("error : " + ex.getClass());
 		super.afterCompletion(request, response, handler, ex);
 	}
 	

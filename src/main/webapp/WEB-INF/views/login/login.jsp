@@ -21,37 +21,7 @@ $(document).ready(function () {
 		param.userFrom = '1';
 		
  		var callBack = "login_callback";
-		request_ajax("/member/signUp.ajax", param, callBack);
 		
-		var param = new Object();
-		param.boardCd = "2";
-		$.ajax({
-			//url:'http://localhost:13080/healthier/api/login/test1/1',
-			headers: {'HealthierAuthKey' : '7c13af54895a363820b454255aa7b9f7'},
-			type:'GET',
-			data:param,
-			success:function(data){
-				console.log(data);
-			},
-			error : function(e){
-				console.log(e);
-			}
-		});
-		/*
-		$.ajax({
-			//url:'http://localhost:13080/healthier/api/login/test1/1',
-			url:'http://localhost:6200/worrior/api/member',
-			headers: {'worriorAuthKey' : '7c13af54895a363820b454255aa7b9f7'},
-			type:'GET',
-			data:param,
-			success:function(data){
-				console.log(data);
-			},
-			error : function(e){
-				console.log(e);
-			}
-		});
-		*/
 	});
 	$('#signUp').on('click', function() {
 // 		location.href = '/member/signup.do'

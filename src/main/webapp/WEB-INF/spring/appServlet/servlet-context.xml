@@ -19,10 +19,10 @@
            <beans:bean id="worriorInterceptor" class="worrior.common.controller.WorriorInterceptor"/>
        </interceptor>
        
-<!--        <interceptor> -->
-<!--            <mapping path="/api/**"/> -->
-<!--            <beans:bean id="worriorApiInterceptor" class="worrior.common.controller.ProsApiInterceptor"/> -->
-<!--        </interceptor> -->
+       <interceptor>
+           <mapping path="/api/**"/>
+           <beans:bean id="worriorApiInterceptor" class="worrior.common.controller.ProsApiInterceptor"/>
+       </interceptor>
        
     </interceptors>
 
@@ -50,6 +50,5 @@
 		<beans:property name="contentType" value="application/json;charset=UTF-8">
 		</beans:property>
 	</beans:bean>
-
 	 
 </beans:beans>
