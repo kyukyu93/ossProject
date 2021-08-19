@@ -1,5 +1,7 @@
 package worrior.member.controller;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -106,6 +108,7 @@ public class MemberController {
 			}
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			model.addAttribute("result", "error");
 			model.addAttribute("msg", "서버통신 중 오류가 발생했습니다");
 		}
@@ -134,5 +137,14 @@ public class MemberController {
 			model.addAttribute("msg", "회원가입에 실패했습니다.");
 		}
 		return "jsonView";
+	}	
+	
+	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
+    public void favicon(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			res.sendRedirect("resources/favicon.ico");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}	
 }

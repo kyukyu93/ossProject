@@ -58,7 +58,7 @@
 		param.userId = $("#userId").val();
 		
  		var callBack = "idChk_callback";
-		request_ajax("/login/idChk.ajax", param, callBack);
+		request_ajax("/member/idChk.ajax", param, callBack);
 	}
 
 	function idChk_callback(result) {
