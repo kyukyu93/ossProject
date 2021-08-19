@@ -1,7 +1,5 @@
 package worrior.home.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +24,17 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/home.do")
+	@RequestMapping(value = {"/home.do", "/mobile/home.do"})
 	public ModelAndView getMainView(HttpServletRequest req, HttpServletResponse res, Model model, ModelAndView modelAndView) throws Exception {
+		
+		if(req.getServletPath().equals("/home.do")) {
+			log.info("/home");
+	    }else if(req.getServletPath().equals("/mobile/home.do")) {
+	    	log.info("/mobile/home");
+	    }
+	    else {
+	    	log.info("Exception url (home)");
+	    }
 		return modelAndView;
 	}	
 	
