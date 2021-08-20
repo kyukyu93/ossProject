@@ -69,7 +69,6 @@ function logout_callback(result) {
 					<a href="/member/login.do" id="signIn">로그인</a> <a href="#">회원가입</a>
 				</c:when>
 				<c:otherwise>
-					<a>1<c:out value="${userChk}"/></a>
 					<a href="#"> ${userName}님</a> <a href="#" id="logout">로그아웃</a>
 				</c:otherwise>
 			</c:choose>
