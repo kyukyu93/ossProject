@@ -15,19 +15,19 @@
 		<!-- 스킵 네비게이션 -->
 		<!-- header -->
 		<div class="header">
-			<jsp:include page="../common/worrior_nav.jsp" flush="false" />
+			<jsp:include page="../../common/worrior_nav.jsp" flush="false" />
 		</div>
 		<!-- 			<hr class="div_contents" /> -->
 		<div class="item-block"></div>
 		<div class="container">
 			<div class="left-nav">
-				<jsp:include page="../common/left_nav.jsp" flush="false" />
+				<jsp:include page="../../common/left_nav.jsp" flush="false" />
 			</div>
 			<div class="content" id="content">
 				<!-- 타이틀 영역 -->
 				<div class="title_area">
-					<h3>프로걱정러 소개</h3>
-					<span><a href="/">Home</a> &gt; 소개 &gt; 프로걱정러</span>
+					<h3>공지사항</h3>
+					<span><a href="/">Home</a> &gt; 서비스관리 &gt; 공지사항</span>
 				</div>
 				<!-- 자료실 -->
 				<div class="table_search_area">
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		<div class="footer">
-			<jsp:include page="../common/worrior_footer.jsp"
+			<jsp:include page="../../common/worrior_footer.jsp"
 				flush="false" />
 		</div>
 	</div>
