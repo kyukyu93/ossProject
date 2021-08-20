@@ -1,5 +1,4 @@
-/* 2020.11.14 */
-/* 2020.11.14 update */
+/* 2021.08.20 */
 /* common */
 
 * {
@@ -23,6 +22,8 @@ div {
 	display: block;
 }
 
+/* 2021.08.20 */
+/* 풀 스크린 영역 조정 */
 video {
 	top: 0;
 	left: 0;
@@ -38,8 +39,7 @@ video {
 	
 }
 
-/* 2020.11.14 */
-/* 2020.11.14 update */
+/* 2021.08.20 */
 /* navigation */
 
 .nav-bar {
@@ -97,9 +97,8 @@ video {
 li.nav-item {
 }
 
-/* 2020.11.14 */
-/* 2020.11.14 update */
-/* button */
+/* 2021.08.20 */
+/* 버튼 */
 
 .btn-green {
 	display: inline-block;
@@ -125,8 +124,8 @@ li.nav-item {
 	padding: 0.5rem 0.8rem;
 }
 
-/* 2020.11.14 */
-/* 2020.11.14 update */
+/* 2021.08.20 */
+/* 티저 영상 풀스크린 */
 /* main */
 
 .main {
