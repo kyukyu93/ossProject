@@ -36,7 +36,7 @@ public class MemberController {
 		return modelAndView;
 	}	
 	
-	@RequestMapping(value = "/login.ajax")
+	@RequestMapping(value = "/login.ajax", method = RequestMethod.POST)
     public String loginProcess(HttpServletRequest req, HttpServletResponse res, Model model) throws Exception {
 		SessionUtils session = new SessionUtils();
 		UtilsUser utilsUser = new UtilsUser();

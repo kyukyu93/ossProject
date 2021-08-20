@@ -13,21 +13,21 @@ public class MemberDAOImpl implements MemberDAO {
 	private SqlSession sqlSession;
 	
 	public int checkIdLogin(MemberVO loginVO) throws Exception {
-		return sqlSession.selectOne("loginDAO.idChkLogin", loginVO);
+		return sqlSession.selectOne("memberDAO.idChkLogin", loginVO);
 		
 	}
 	public void insertLoginLog(MemberVO loginVO) throws Exception {
-		sqlSession.insert("loginDAO.loginLog", loginVO);
+		sqlSession.insert("memberDAO.loginLog", loginVO);
 	}
 	public MemberVO getUserInfo(MemberVO loginVO) throws Exception {
-		return sqlSession.selectOne("loginDAO.getUserInfo", loginVO);
+		return sqlSession.selectOne("memberDAO.getUserInfo", loginVO);
 	}
 	public int checkId(MemberVO loginVO) throws Exception {
-		return sqlSession.selectOne("loginDAO.idChk", loginVO);
+		return sqlSession.selectOne("memberDAO.idChk", loginVO);
 		
 	}
 	public int signUp(MemberVO loginVO) throws Exception {
-		return sqlSession.insert("loginDAO.signUp", loginVO);
+		return sqlSession.insert("memberDAO.signUp", loginVO);
 		
 	}
 }

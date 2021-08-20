@@ -21,7 +21,7 @@ $(document).ready(function () {
 		param.userFrom = '1';
 		
  		var callBack = "login_callback";
-		request_ajax("/member/signUp.ajax", param, callBack);
+		request_ajax("/member/login.ajax", param, callBack);
 		
 	});
 	$('#signUp').on('click', function() {
@@ -33,7 +33,7 @@ $(document).ready(function () {
 function login_callback(result) {
 	console.log(result);
 	if(result.result == "success") {
-		location.replace('/worrior/home/home.do');
+		location.replace('/worrior/home.do');
 	}
 	else {
 		alert(result.msg);
