@@ -53,15 +53,48 @@ public class APIController {
 	 */
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/tracking", method = RequestMethod.POST)
-    public String insertTrackingData(HttpServletRequest req, HttpServletResponse res, Model model) throws Exception {
+    public String postTrackingData(HttpServletRequest req, HttpServletResponse res, Model model) throws Exception {
 		HashMap hashMap = new HashMap();
 		try {
 			SessionUtils sessionUtils = new SessionUtils();
-			System.out.println("############"+sessionUtils.getUserId());
 			if("".equals(sessionUtils.getUserId()) || null == sessionUtils.getUserId()) {
-				System.out.println("############222"+sessionUtils.getUserId());
-				 hashMap = propertiesUtils.getMessage("api.fail.req.auth");
+//				 hashMap = propertiesUtils.getMessage("api.fail.req.auth");
+				hashMap.put("code", "401");
+				hashMap.put("msg", "인증되지 않은 사용자");
 			}
+			else {
+				
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		model.addAttribute("data", hashMap);
+		return "jsonView";
+	}
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/tracking", method = RequestMethod.GET)
+    public String getTrackingData(HttpServletRequest req, HttpServletResponse res, Model model) throws Exception {
+		HashMap hashMap = new HashMap();
+		String strAccuracy = req.getParameter("accuracy");
+		String strTime = req.getParameter("time");
+		String strLatitude = req.getParameter("latitude");
+		String strLongitude = req.getParameter("longitude");
+		try {
+			SessionUtils sessionUtils = new SessionUtils();
+			if("".equals(sessionUtils.getUserId()) || null == sessionUtils.getUserId()) {
+				 //hashMap = propertiesUtils.getMessage("api.fail.req.auth");
+				hashMap.put("code", "401");
+				hashMap.put("msg", "인증되지 않은 사용자");
+				hashMap.put("acc", strAccuracy);
+				hashMap.put("tim", strTime);
+				hashMap.put("add", strLatitude);
+				hashMap.put("add", strLongitude);
+			}
+			else {
+				hashMap.put("code", "200");
+				hashMap.put("msg", "조회 테스트, "+sessionUtils.getUserId()+"로그인 성공");
+			}			
 		}
 		catch (Exception e) {
 			// TODO: handle exception

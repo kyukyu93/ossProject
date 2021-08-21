@@ -42,7 +42,7 @@ $(document).ready(function () {
 		param.param2 = $("#param2").val();
 		
 		$.ajax({
-			url:'/api/board/1',
+			url:'/api/tracking',
 			headers: {'WorriorAuthKey' : '7c13af54895a363820b454255aa7b9f7'},
 			type:'GET',
 			data:param,
