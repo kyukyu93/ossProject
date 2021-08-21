@@ -88,8 +88,8 @@ public class APIController {
 				hashMap.put("msg", "인증되지 않은 사용자");
 				hashMap.put("acc", strAccuracy);
 				hashMap.put("tim", strTime);
-				hashMap.put("add", strLatitude);
-				hashMap.put("add", strLongitude);
+				hashMap.put("lat", strLatitude);
+				hashMap.put("lon", strLongitude);
 			}
 			else {
 				hashMap.put("code", "200");
