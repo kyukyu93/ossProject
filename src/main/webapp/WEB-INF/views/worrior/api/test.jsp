@@ -21,8 +21,15 @@ $(document).ready(function () {
 		param.param1 = $("#param1").val();
 		param.param2 = $("#param2").val();
 
+		param.accuracy = "100";
+		param.time = "2150";
+		param.latitude = "211.1111";
+		param.longitude = "100.0000";
+		
+		
 		$.ajax({
-			url:'/api/board/1',
+// 			url:'/api/board/1',
+			url:'/api/tracking'
 			headers: {'WorriorAuthKey' : '7c13af54895a363820b454255aa7b9f7'},
 			type:'POST',
 			data:param,
@@ -31,6 +38,12 @@ $(document).ready(function () {
 			},
 			error : function(e){
 				console.log(e);
+				/*
+				hashMap.put("accuracy", strAccuracy);
+				hashMap.put("time", strTime);
+				hashMap.put("latitude", strLatitude);
+				hashMap.put("longitude", strLongitude);
+				*/
 			}
 		});
 	}); 
