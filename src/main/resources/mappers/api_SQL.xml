@@ -8,6 +8,6 @@
    	<insert id="postTracking" parameterType="hashMap">
    		/*apiDAO postTracking 2021.08.22 ORW*/
 		INSERT INTO WR_TRACKING(USER_ID, USE_YN, TRACK_TIME, ACCURACY, LATITUDE, LONGITUDE) 
-		VALUES (#{userId}, 'Y', #{trackTime} #{accuracy}, #{latitude}, #{LONGITUDE})
+		VALUES (#{userId}, 'Y', #{trackTime}, #{accuracy}, #{latitude}, #{longitude})
    	</insert>
 </mapper>

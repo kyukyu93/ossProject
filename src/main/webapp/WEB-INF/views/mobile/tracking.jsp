@@ -63,7 +63,7 @@ function writeTracking() {
 <title>나도 설마? 모바일</title>
 <body>
 <div id="map" style="width:100%;height:400px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=#"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a6cc1177c1c614e1fecb2388d18dad96"></script>
 
 <script type="text/javascript">
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스

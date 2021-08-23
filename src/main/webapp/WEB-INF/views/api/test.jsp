@@ -21,6 +21,11 @@ $(document).ready(function () {
 		param.param1 = $("#param1").val();
 		param.param2 = $("#param2").val();
 
+		param.accuracy = "100";
+		param.time = "2150";
+		param.latitude = "211.1111";
+		param.longitude = "100.0000";
+		
 		$.ajax({
 // 			url:'/api/board/1',
 			url:'/api/tracking',

@@ -78,11 +78,11 @@ public class APIController {
 			}
 			hashMap.put("code", "200");
 			hashMap.put("msg", "정상적으로 처리되었습니다");
-			hashMap.put("userid", "public");
+			hashMap.put("userId", "public");
 			hashMap.put("accuracy", strAccuracy);
 			hashMap.put("trackTime", strTime);
 			hashMap.put("latitude", strLatitude);
-			hashMap.put("LONGITUDE", strLongitude);
+			hashMap.put("longitude", strLongitude);
 			
 			
 			apiService.postTracking(hashMap);
