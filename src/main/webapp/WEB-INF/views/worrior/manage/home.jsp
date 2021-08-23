@@ -9,6 +9,126 @@
 <script type="text/javascript" src="/resources/worrior/js/nav.js"></script>
 <script type="text/javascript" src="/resources/worrior/js/jquery-3.5.1.js"></script>
 </head>
+<script type="text/javascript">
+var pageStart = 0;
+var initPaging = 0;
+var pageTarget = 1;
+
+$(document).ready(function () {
+	$('#apiReload').on('click', function() {
+		var param = new Object();
+		param.useType = "1";
+ 		var callBack = "api_callback";
+		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
+		
+	});
+	$('#apiInfo').on('click', function() {
+		var param = new Object();
+		param.useType = "1";
+ 		var callBack = "apiList_callback";
+		get_ajax("/worrior/manage/getMonList.ajax", param, callBack);
+	});
+	$('#ajaxReload').on('click', function() {
+		var param = new Object();
+		param.useType = "2";
+ 		var callBack = "api_callback";
+		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
+	});
+	$('#secureReload').on('click', function() {
+		var param = new Object();
+		param.useType = "3";
+ 		var callBack = "api_callback";
+		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
+	});
+	$('#messageReload').on('click', function() {
+		var param = new Object();
+		param.useType = "4";
+ 		var callBack = "api_callback";
+		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
+	});
+});
+
+function api_callback(result) {
+	console.log(result.data);
+	if(result.data.callAvg=="NaN") $('#apiCallAvg').html("-");
+	else $('#apiCallAvg').html(result.data.callAvg + "%");
+	
+	$('#apiAllCnt').html(result.data.allCnt + " 건");
+	$('#apiRequestTime').html(result.data.requestTime);
+	$('#apiSuccessCnt').html(result.data.successCnt + " 건");
+	$('#apiFailCnt').html(result.data.failCnt + " 건");
+}
+
+function apiList_callback(result) {
+	$("#boardList").empty();
+	var str = "";
+	if (result.data.boardList.length > 0) {
+		$.each( result.data.boardList, function(index, data) {
+			str+="<tr>";
+			str+="<td>"+data.userId+"</td>";
+			str+="<td>"+data.useUrl+"</td>";
+			str+="<td>"+data.useIp+"</td>";
+			if(data.useType=="1") str+="<td>API</td>";
+			else if(data.useType=="2") str+="<td>ajax</td>";
+			else if(data.useType=="3") str+="<td>보안</td>";
+			else str+="<td>메시지</td>";
+			if(data.useSuccess=="Y") str+="<td>성공</td>";
+			else str+="<td>실패</td>";
+			str+="<td>"+moment(data.createDt).format('YYYY-MM-DD HH:mm:ss')+"</td>";
+			//
+			str+="</tr>";
+			$("#boardList").append(str);
+			str = "";
+		});
+		
+	} else {
+		str+="<tr>";
+		str+="<td colspan='6'>";
+		str+="호출 기록이 없습니다"
+		str+="</td>";
+		str+="</tr>";
+		$("#boardList").append(str);
+	}
+	$(".util_paging").empty();
+	
+	
+	initPaging = parseInt(result.data.boardCount / 10) + 1;
+	
+	str = "";
+	str+="<a href='#' onclick=\"fncSearch('"+0+"');\" class='pg_first'></a>";
+	str+="<a href='#' onclick=\"fncSearch('"+(pageStart-100)+"');\" class='pg_prev'></a>";
+	
+	for(var i = pageStart; i < initPaging; i ++) {
+		str+="<a href='#' id=page"+i+" onclick=\"fncSearch('"+i+"');\" class='num'>"+(i+1)+"</a>";
+	}
+	str+="<a href='#' onclick=\"fncSearch('"+(pageStart+100)+"');\" class='pg_next'></a>";
+	str+="<a href='#' onclick=\"fncSearch('"+(initPaging-1)+"');\" class='pg_last'></a>";
+	
+	$(".util_paging").append(str);
+	$('#total').html(result.data.boardCount);
+	
+	document.getElementById("page"+pageStart).classList.add('active');
+	console.log(pageStart);
+}
+
+function fncSearch(pag) {
+	if(pag == undefined || pag == "") pag = 0;
+	if(pag > initPaging) pag = initPaging-1;
+	if(pag < 0) pag = 0;
+	pagestart = pag;
+	
+	var param = new Object();
+	param.searchType = $("#searchType").val();
+	param.searchText = $("#searchText").val();
+	param.useType = pageTarget;
+	param.pageStart = pagestart;
+	
+	var callBack = "apiList_callback";
+// 	request_ajax("/worrior/manage/getMonList.ajax", param, callBack);
+	get_ajax("/worrior/manage/getMonList.ajax", param, callBack);
+}
+</script>
+
 <body>
 
 	<div class="wrap">
@@ -52,11 +172,11 @@
 					<div style="display: block; margin-top: 30px; text-align: right;">2021-07-18 16:01:00</div>
 				</div>
 
-				<div class="mon2" style="float: left;width: 23%;display: inline-block;height: 100%;padding: 1%;background-color: navajowhite; cursor: pointer;">
+				<div class="mon2" id="apiInfo" style="float: left;width: 23%;display: inline-block;height: 100%;padding: 1%;background-color: navajowhite; cursor: pointer;">
 					<div style="display: inline-block; width: 100%;">
 						<div style="display: block; margin-bottom: 30px; font-weight: bold; font-size: 1.3em; float: left;">API 모니터링</div>
 						<div style="display: block; margin-bottom: 30px; font-weight: bold; font-size: 1.3em; float: right;">
-							<button>새로고침</button>
+							<button id="apiReload">새로고침</button>
 						</div>
 					</div>
 					<div>
@@ -71,15 +191,15 @@
 							</thead>
 							<tbody style="text-align: center;">
 								<tr>
-									<td>1,000</td>
-									<td>970</td>
-									<td>30</td>
-									<td>97.00%</td>
+									<td id="apiAllCnt">1,000</td>
+									<td id="apiSuccessCnt">970</td>
+									<td id="apiFailCnt">30</td>
+									<td id="apiCallAvg">97.00%</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div style="display: block; margin-top: 30px; text-align: right;">2021-07-18 16:01:00</div>
+					<div style="display: block; margin-top: 30px; text-align: right;" id="apiRequestTime">2021-07-18 16:01:00</div>
 				</div>
 				
 				<div class="mon3" style="float: left;width: 23%;display: inline-block;height: 100%;padding: 1%;background-color: steelblue; cursor: pointer;">

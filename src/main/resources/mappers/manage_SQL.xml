@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="manageDAO">
+	<sql id="searchOption">
+		<if test="searchText  != null and  searchText != '' ">
+			<if test='searchType == "total" '>
+				AND (BOARD_TITLE LIKE '%${searchText}%'  OR  BOARD_CONTENT LIKE '%${searchText}%')
+			</if>
+			<if test='searchType =="title" '>
+				AND BOARD_TITLE LIKE '%${searchText}%'
+			</if>
+			<if test='searchType == "content" '>
+				AND BOARD_CONTENT LIKE '%${searchText}%'
+			</if>		
+		</if>			
+	</sql>
+	
+   	<select id="getProcMon" resultType="hashMap"  parameterType="hashMap">
+   		/*manageDAO getProcMon 2021.08.22 ORW*/
+		SELECT A.*, B.*  FROM 
+		(SELECT COUNT(1) AS 'allCnt' FROM MON_PROCESS WHERE USE_TYPE=${useType}) A,
+		(SELECT COUNT(CASE WHEN USE_SUCCESS = 'Y' THEN 'Y' END) AS 'successCnt', COUNT(CASE WHEN USE_SUCCESS = 'N' THEN 'N' END) AS 'failCnt' FROM MON_PROCESS WHERE USE_TYPE=${useType}) B
+   	</select>
+   	
+   	<select id="getProcMonList" resultType="hashMap"  parameterType="hashMap">
+   		/*manageDAO getProcMon 2021.08.23 ORW*/
+		SELECT 
+			USER_ID AS 'userId', 
+			USE_URL AS 'useUrl', 
+			USE_IP AS 'useIp', 
+			USE_TYPE AS 'useType', 
+			USE_SUCCESS AS 'useSuccess',
+			CREATE_DT AS 'createDt'
+		FROM MON_PROCESS
+		WHERE USE_TYPE =${useType}
+		<include refid="searchOption" />
+		ORDER BY CREATE_DT 
+		LIMIT #{pageStart}, 10
+   	</select>
+   	
+   	<select id="getProcMonListCount" resultType="int"  parameterType="hashMap">
+   		/*manageDAO getProcMonListCount 2021.08.23 ORW*/
+		SELECT 
+			COUNT(1)
+		FROM MON_PROCESS
+		WHERE USE_TYPE =${useType}
+   	</select>
+</mapper>

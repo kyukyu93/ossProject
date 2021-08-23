@@ -36,6 +36,12 @@ public class ProsApiInterceptor extends HandlerInterceptorAdapter {
 		UtilsUser utils = new UtilsUser(); 
 		String userIp = utils.getIp(request);
 		
+		
+		hashMap.put("userIp", userIp);
+		hashMap.put("userUrl", userUrl);
+		hashMap.put("useType", "1");
+		hashMap.put("userSuccess", "Y");
+		
 		String userId = "";
 		try {
 			hashMap.put(userIp, userId);
@@ -43,10 +49,12 @@ public class ProsApiInterceptor extends HandlerInterceptorAdapter {
 			hashMap.put("userId", userId);
 			hashMap.put("userIp", userIp);
 			hashMap.put("userUrl", userUrl);
+			hashMap.put("useType", "1");
 			hashMap.put("userSuccess", "Y");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+			hashMap.put("userId", "public");
 			hashMap.put("userSuccess", "N");
 			// TODO: handle exception
 		}
