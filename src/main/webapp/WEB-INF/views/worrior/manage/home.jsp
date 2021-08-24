@@ -74,7 +74,8 @@ function apiList_callback(result) {
 			else str+="<td>메시지</td>";
 			if(data.useSuccess=="Y") str+="<td>성공</td>";
 			else str+="<td>실패</td>";
-			str+="<td>"+moment(data.createDt).format('YYYY-MM-DD HH:mm:ss')+"</td>";
+// 			str+="<td>"+moment(data.createDt).format('YYYY-MM-DD HH:mm:ss')+"</td>";
+			str+="<td>"+data.createDt+"</td>";
 			//
 			str+="</tr>";
 			$("#boardList").append(str);

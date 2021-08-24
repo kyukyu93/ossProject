@@ -33,11 +33,11 @@
 			USE_IP AS 'useIp', 
 			USE_TYPE AS 'useType', 
 			USE_SUCCESS AS 'useSuccess',
-			CREATE_DT AS 'createDt'
+			DATE_FORMAT(CREATE_DT, '%Y-%m-%d %H:%i:%s') AS 'createDt'
 		FROM MON_PROCESS
 		WHERE USE_TYPE =${useType}
 		<include refid="searchOption" />
-		ORDER BY CREATE_DT 
+		ORDER BY CREATE_DT DESC
 		LIMIT #{pageStart}, 10
    	</select>
    	
