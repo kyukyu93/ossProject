@@ -1,5 +1,6 @@
 package worrior.common.controller;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 
 import javax.inject.Inject;
@@ -41,16 +42,21 @@ public class ProsApiInterceptor extends HandlerInterceptorAdapter {
 		hashMap.put("userUrl", userUrl);
 		hashMap.put("useType", "1");
 		hashMap.put("userSuccess", "Y");
-		
 		String userId = "";
+		userId = ("".equals(session.getUserId()) || session.getUserId() == null) ? "public" : session.getUserId();
+		hashMap.put("userId", userId);
 		try {
 			hashMap.put(userIp, userId);
-			userId = ("".equals(session.getUserId()) || session.getUserId() == null) ? "public" : session.getUserId();
-			hashMap.put("userId", userId);
-			hashMap.put("userIp", userIp);
-			hashMap.put("userUrl", userUrl);
-			hashMap.put("useType", "1");
 			hashMap.put("userSuccess", "Y");
+			Enumeration params = request.getParameterNames();
+			String paramNm = "";
+			String paramLog = "";
+			
+			while(params.hasMoreElements()) {
+				paramNm = (String) params.nextElement();
+				paramLog += paramNm+":"+request.getParameter(paramNm)+" ";
+			}
+			log.info(paramLog);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -71,6 +77,4 @@ public class ProsApiInterceptor extends HandlerInterceptorAdapter {
 //		log.error("error : " + ex.getClass());
 		super.afterCompletion(request, response, handler, ex);
 	}
-	
-
 }
