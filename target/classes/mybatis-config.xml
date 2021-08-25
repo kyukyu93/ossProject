@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias type="worrior.common.vo.CommonVO" alias="commonVO" />
 		<typeAlias type="worrior.member.vo.MemberVO" alias="memberVO" />
+		<typeAlias type="java.util.HashMap" alias="hashMap" />
 	</typeAliases>
 
 </configuration>

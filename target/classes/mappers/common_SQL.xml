@@ -55,7 +55,7 @@
 	<insert id="insertProcessLog" parameterType="commonVO">
 		/*commonDAO insertProcessLog 2021.08.18 ORW*/
 		INSERT INTO MON_PROCESS (USER_ID, USE_URL, USE_IP, USE_TYPE, USE_SUCCESS)
-		VALUES(#{userId}, #{userUrl}, #{userIp}, 1, #{userSuccess})
+		VALUES(#{userId}, #{userUrl}, #{userIp}, #{useType}, #{userSuccess})
 	</insert>
 	
 </mapper>
