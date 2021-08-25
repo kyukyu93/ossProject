@@ -20,6 +20,12 @@
        </interceptor>
        
        <interceptor>
+           <mapping path="/worrior/**"/>
+           <exclude-mapping path="/**/**/*.do"/>
+           <beans:bean id="worriorAjaxInterceptor" class="worrior.common.controller.ProsAjaxInterceptor"/>
+       </interceptor>
+       
+       <interceptor>
            <mapping path="/api/**"/>
            <beans:bean id="worriorApiInterceptor" class="worrior.common.controller.ProsApiInterceptor"/>
        </interceptor>

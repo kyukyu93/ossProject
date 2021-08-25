@@ -15,24 +15,31 @@ var initPaging = 0;
 var pageTarget = 1;
 
 $(document).ready(function () {
-	$('#apiReload').on('click', function() {
+	$('#ajaxReload').on('click', function() {
 		var param = new Object();
 		param.useType = "1";
+ 		var callBack = "ajax_callback";
+		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
+	});
+	$('#ajaxInfo').on('click', function() {
+		var param = new Object();
+		param.useType = "1";
+ 		var callBack = "apiList_callback";
+		get_ajax("/worrior/manage/getMonList.ajax", param, callBack);
+	});
+	
+	$('#apiReload').on('click', function() {
+		var param = new Object();
+		param.useType = "2";
  		var callBack = "api_callback";
 		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
 		
 	});
 	$('#apiInfo').on('click', function() {
 		var param = new Object();
-		param.useType = "1";
+		param.useType = "2";
  		var callBack = "apiList_callback";
 		get_ajax("/worrior/manage/getMonList.ajax", param, callBack);
-	});
-	$('#ajaxReload').on('click', function() {
-		var param = new Object();
-		param.useType = "2";
- 		var callBack = "api_callback";
-		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
 	});
 	$('#secureReload').on('click', function() {
 		var param = new Object();
@@ -46,7 +53,25 @@ $(document).ready(function () {
  		var callBack = "api_callback";
 		get_ajax("/worrior/manage/getMon.ajax", param, callBack);
 	});
+	
+
+	$('#ajaxReload').click();
+	$('#apiReload').click();
+	
+	fncSearch(1);
 });
+
+
+function ajax_callback(result) {
+	console.log(result.data);
+	if(result.data.callAvg=="NaN") $('#ajaxCallAvg').html("-");
+	else $('#ajaxCallAvg').html(result.data.callAvg + "%");
+	
+	$('#ajaxAllCnt').html(result.data.allCnt + " 건");
+	$('#ajaxRequestTime').html(result.data.requestTime);
+	$('#ajaxSuccessCnt').html(result.data.successCnt + " 건");
+	$('#ajaxFailCnt').html(result.data.failCnt + " 건");
+}
 
 function api_callback(result) {
 	console.log(result.data);
@@ -58,7 +83,6 @@ function api_callback(result) {
 	$('#apiSuccessCnt').html(result.data.successCnt + " 건");
 	$('#apiFailCnt').html(result.data.failCnt + " 건");
 }
-
 function apiList_callback(result) {
 	$("#boardList").empty();
 	var str = "";
@@ -67,9 +91,13 @@ function apiList_callback(result) {
 			str+="<tr>";
 			str+="<td>"+data.userId+"</td>";
 			str+="<td>"+data.useUrl+"</td>";
+			if(data.useParameter == "undefined" || data.useParameter == undefined) str+="<td> - </td>";
+			else str+="<td>"+data.useParameter+"</td>";
+			if(data.useMethod == "undefined" || data.useMethod == undefined) str+="<td> - </td>";
+			else str+="<td>"+data.useMethod+"</td>";
 			str+="<td>"+data.useIp+"</td>";
-			if(data.useType=="1") str+="<td>API</td>";
-			else if(data.useType=="2") str+="<td>ajax</td>";
+			if(data.useType=="1") str+="<td>ajax</td>";
+			else if(data.useType=="2") str+="<td>API</td>";
 			else if(data.useType=="3") str+="<td>보안</td>";
 			else str+="<td>메시지</td>";
 			if(data.useSuccess=="Y") str+="<td>성공</td>";
@@ -84,7 +112,7 @@ function apiList_callback(result) {
 		
 	} else {
 		str+="<tr>";
-		str+="<td colspan='6'>";
+		str+="<td colspan='8'>";
 		str+="호출 기록이 없습니다"
 		str+="</td>";
 		str+="</tr>";
@@ -95,6 +123,7 @@ function apiList_callback(result) {
 	
 	initPaging = parseInt(result.data.boardCount / 10) + 1;
 	
+	console.log("#######" + initPaging);
 	str = "";
 	str+="<a href='#' onclick=\"fncSearch('"+0+"');\" class='pg_first'></a>";
 	str+="<a href='#' onclick=\"fncSearch('"+(pageStart-100)+"');\" class='pg_prev'></a>";
@@ -108,16 +137,17 @@ function apiList_callback(result) {
 	$(".util_paging").append(str);
 	$('#total').html(result.data.boardCount);
 	
-	document.getElementById("page"+pageStart).classList.add('active');
+	document.getElementById("page"+pagestart).classList.add('active');
 	console.log(pageStart);
 }
 
 function fncSearch(pag) {
+	
 	if(pag == undefined || pag == "") pag = 0;
 	if(pag > initPaging) pag = initPaging-1;
 	if(pag < 0) pag = 0;
 	pagestart = pag;
-	
+	console.log('##' + pageStart);
 	var param = new Object();
 	param.searchType = $("#searchType").val();
 	param.searchText = $("#searchText").val();
@@ -143,11 +173,11 @@ function fncSearch(pag) {
 		<div class="container">
 			
 			<div class="mon_banner" style="background-color: aliceblue; height: 150px; width: 100%; display: inline-block;">
-				<div class="mon1" style="float: left;width: 23%;display: inline-block;height: 100%;padding: 1%;background-color: lightgray; cursor: pointer;">
+				<div class="mon1" id="ajaxInfo" style="float: left;width: 23%;display: inline-block;height: 100%;padding: 1%;background-color: lightgray; cursor: pointer;">
 					<div style="display: inline-block; width: 100%;">
 						<div style="display: block; margin-bottom: 30px; font-weight: bold; font-size: 1.3em; float: left;">프로세스 모니터링</div>
 						<div style="display: block; margin-bottom: 30px; font-weight: bold; font-size: 1.3em; float: right;">
-							<button>새로고침</button>
+							<button id="ajaxReload">새로고침</button>
 						</div>
 					</div>
 					<div>
@@ -162,15 +192,15 @@ function fncSearch(pag) {
 							</thead>
 							<tbody style="text-align: center;">
 								<tr>
-									<td>1,000</td>
-									<td>970</td>
-									<td>30</td>
-									<td>97.00%</td>
+									<td id="ajaxAllCnt">1,000</td>
+									<td id="ajaxSuccessCnt">970</td>
+									<td id="ajaxFailCnt">30</td>
+									<td id="ajaxCallAvg">97.00%</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div style="display: block; margin-top: 30px; text-align: right;">2021-07-18 16:01:00</div>
+					<div style="display: block; margin-top: 30px; text-align: right; " id="ajaxRequestTime">2021-07-18 16:01:00</div>
 				</div>
 
 				<div class="mon2" id="apiInfo" style="float: left;width: 23%;display: inline-block;height: 100%;padding: 1%;background-color: navajowhite; cursor: pointer;">
@@ -276,16 +306,20 @@ function fncSearch(pag) {
 				<table class="list_table">
 					<colgroup>
 						<col width="100">
+						<col width="200">
 						<col width="*">
-						<col width="300">
-						<col width="100">
-						<col width="100">
-						<col width="300">
+						<col width="80">
+						<col width="200">
+						<col width="80">
+						<col width="80">
+						<col width="180">
 					</colgroup>
 					<thead>
 						<tr class="first">
 							<th scope="col">ID</th>
 							<th scope="col">URL</th>
+							<th scope="col">Parameter</th>
+							<th scope="col">Method</th>
 							<th scope="col">IP</th>
 							<th scope="col">호출구분</th>
 							<th scope="col">성공여부</th>
@@ -298,6 +332,7 @@ function fncSearch(pag) {
 							<td>test1</td>
 							<td>TEST/TEST</td>
 							<td>0.0.0.1</td>
+							<td>param1</td>
 							<td>API</td>
 							<td>성공</td>
 							<td>2021.08.21</td>

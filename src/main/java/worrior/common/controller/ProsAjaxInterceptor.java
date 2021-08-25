@@ -16,7 +16,7 @@ import worrior.common.dao.CommonDAO;
 import worrior.common.util.commonUtils.SessionUtils;
 import worrior.common.util.utils.UtilsUser;
 
-public class ProsApiInterceptor extends HandlerInterceptorAdapter {
+public class ProsAjaxInterceptor extends HandlerInterceptorAdapter {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Inject
@@ -42,7 +42,7 @@ public class ProsApiInterceptor extends HandlerInterceptorAdapter {
 		hashMap.put("userIp", userIp);
 		hashMap.put("useMethod", httpMethod);
 		hashMap.put("userUrl", userUrl);
-		hashMap.put("useType", "2");
+		hashMap.put("useType", "1");
 		hashMap.put("userSuccess", "Y");
 		hashMap.put("useParam", "");
 		String userId = "";
@@ -52,7 +52,7 @@ public class ProsApiInterceptor extends HandlerInterceptorAdapter {
 			hashMap.put("userId", userId);
 			hashMap.put("userIp", userIp);
 			hashMap.put("userUrl", userUrl);
-			hashMap.put("useType", "2");
+			hashMap.put("useType", "1");
 			hashMap.put("userSuccess", "Y");
 			
 			String useParam = "";

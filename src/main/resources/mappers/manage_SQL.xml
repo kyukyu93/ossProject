@@ -6,14 +6,14 @@
 <mapper namespace="manageDAO">
 	<sql id="searchOption">
 		<if test="searchText  != null and  searchText != '' ">
-			<if test='searchType == "total" '>
-				AND (BOARD_TITLE LIKE '%${searchText}%'  OR  BOARD_CONTENT LIKE '%${searchText}%')
+			<if test='searchType == "userId" '>
+				AND (userId LIKE '%${searchText}%'  OR  userId LIKE '%${searchText}%')
 			</if>
-			<if test='searchType =="title" '>
-				AND BOARD_TITLE LIKE '%${searchText}%'
+			<if test='searchType =="useSuccess" '>
+				AND useSuccess LIKE '%${searchText}%'
 			</if>
-			<if test='searchType == "content" '>
-				AND BOARD_CONTENT LIKE '%${searchText}%'
+			<if test='searchType == "useType" '>
+				AND useType LIKE '%${searchText}%'
 			</if>		
 		</if>			
 	</sql>
@@ -33,6 +33,8 @@
 			USE_IP AS 'useIp', 
 			USE_TYPE AS 'useType', 
 			USE_SUCCESS AS 'useSuccess',
+			USE_PARAM AS 'useParameter',
+			USE_METHOD AS 'useMethod',
 			DATE_FORMAT(CREATE_DT, '%Y-%m-%d %H:%i:%s') AS 'createDt'
 		FROM MON_PROCESS
 		WHERE USE_TYPE =${useType}
