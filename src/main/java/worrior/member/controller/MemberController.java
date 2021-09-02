@@ -19,6 +19,10 @@ import worrior.common.util.utils.UtilsUser;
 import worrior.member.service.MemberService;
 import worrior.member.vo.MemberVO;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.Connection;
+
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -52,7 +56,7 @@ public class MemberController {
 		MemberVO resultVO = loginService.loginProcess(loginVO);
 		if(resultVO != null) {
 			model.addAttribute("result", "success");
-			model.addAttribute("msg", "환영합니다");
+			model.addAttribute("msg", "�솚�쁺�빀�땲�떎");
 			model.addAttribute("userInfo", resultVO);
 			session.setUserId(resultVO.getUserId());
 			session.setUserNm(resultVO.getUserNm());
@@ -62,7 +66,7 @@ public class MemberController {
 		}
 		else {
 			model.addAttribute("result", "fail");
-			model.addAttribute("msg", "로그인에 실패하였습니다");
+			model.addAttribute("msg", "濡쒓렇�씤�뿉 �떎�뙣�븯���뒿�땲�떎");
 		}
 		return "jsonView";
 	}	
@@ -80,11 +84,11 @@ public class MemberController {
 		try {
 			session.removeSession();
 			model.addAttribute("result", "success");
-			model.addAttribute("msg", "안전하게 로그아웃되었습니다.");
+			model.addAttribute("msg", "�븞�쟾�븯寃� 濡쒓렇�븘�썐�릺�뿀�뒿�땲�떎.");
 		}
 		catch(Exception e) {
 			model.addAttribute("result", "fail");
-			model.addAttribute("msg", "로그아웃 중 오류가 발생했습니다.");
+			model.addAttribute("msg", "濡쒓렇�븘�썐 以� �삤瑜섍� 諛쒖깮�뻽�뒿�땲�떎.");
 		}
 		
 		return "jsonView";
@@ -100,17 +104,17 @@ public class MemberController {
 
 			if(idChk == 0) {
 				model.addAttribute("result", "success");
-				model.addAttribute("msg", "사용할 수 있는 ID입니다");
+				model.addAttribute("msg", "�궗�슜�븷 �닔 �엳�뒗 ID�엯�땲�떎");
 			}
 			else {
 				model.addAttribute("result", "fail");
-				model.addAttribute("msg", "사용할 수 없는 ID입니다");
+				model.addAttribute("msg", "�궗�슜�븷 �닔 �뾾�뒗 ID�엯�땲�떎");
 			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 			model.addAttribute("result", "error");
-			model.addAttribute("msg", "서버통신 중 오류가 발생했습니다");
+			model.addAttribute("msg", "�꽌踰꾪넻�떊 以� �삤瑜섍� 諛쒖깮�뻽�뒿�땲�떎");
 		}
 		return "jsonView";
 	}	
@@ -130,19 +134,25 @@ public class MemberController {
 		int chkIn = loginService.signUp(loginVO);
 		if(chkIn == 1) {
 			model.addAttribute("result", "success");
-			model.addAttribute("msg", "회원가입에 성공했습니다.\n"+loginVO.getUserNm()+"님 환영합니다.");
+			model.addAttribute("msg", "�쉶�썝媛��엯�뿉 �꽦怨듯뻽�뒿�땲�떎.\n"+loginVO.getUserNm()+"�떂 �솚�쁺�빀�땲�떎.");
 		}
 		else {
 			model.addAttribute("result", "fail");
-			model.addAttribute("msg", "회원가입에 실패했습니다.");
+			model.addAttribute("msg", "�쉶�썝媛��엯�뿉 �떎�뙣�뻽�뒿�땲�떎.");
 		}
 		return "jsonView";
 	}	
 	
-	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
-    public void favicon(HttpServletRequest req, HttpServletResponse res) {
+	@RequestMapping(value = "/jsoup.ajax")
+    public void jsoupTest(HttpServletRequest req, HttpServletResponse res) {
 		try {
-			res.sendRedirect("resources/favicon.ico");
+			String URL = "https://www.gangnam.go.kr";
+			
+			Connection conn = Jsoup.connect(URL);
+			
+			Document html = conn.get();
+			
+			System.out.println(html);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

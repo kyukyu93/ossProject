@@ -28,6 +28,12 @@ $(document).ready(function () {
 		location.href = '/member/signup.do'
 	});
 	
+	$('#jsoup').on('click', function() {
+		var param = new Object();
+		
+ 		var callBack = "jsoup_callback";
+		request_ajax("/member/jsoup.ajax", param, callBack);
+	});
 });
 
 function login_callback(result) {
@@ -38,6 +44,11 @@ function login_callback(result) {
 	else {
 		alert(result.msg);
 	}
+}
+
+//크롤링 콜백.. 처리 없음
+function login_callback(result) {
+	console.log('다녀왔습니다~~');
 }
 </script>
 
@@ -71,6 +82,7 @@ function login_callback(result) {
 				<input type="button" class="" id="" value="애플 로그인" style="border-style:none; width:49%; float:left; margin-bottom:5px; margin-right:1%; height:35px;">
 				<input type="button" class="" id="" value="구글 로그인" style="border-style:none; width:49%; float:left; margin-bottom:5px; margin-right:1%; height:35px;">
 				<input type="button" class="" id="" value="페이스북 로그인" style="border-style:none; width:49%; float:left; margin-bottom:5px; margin-right:1%; height:35px;">
+				<input type="button" class="" id="jsoup" value="크롤링 테스트" style="border-style:none; width:49%; float:left; margin-bottom:5px; margin-right:1%; height:35px;">
 			</div>
 <!-- 			<input type="button" class="btn btn-lg btn-primary btn-block" id="signIn" value="로그인">  -->
 <!-- 				<input type="button" class="btn btn-lg btn-success btn-block" id="signUp" value="회원가입"> -->
