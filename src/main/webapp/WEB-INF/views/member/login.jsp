@@ -46,10 +46,10 @@ function login_callback(result) {
 	}
 }
 
-//크롤링 콜백.. 처리 없음
-function login_callback(result) {
-	console.log('다녀왔습니다~~');
-}
+// //크롤링 콜백.. 처리 없음
+// function login_callback(result) {
+// 	console.log('다녀왔습니다~~');
+// }
 </script>
 
 </head>
