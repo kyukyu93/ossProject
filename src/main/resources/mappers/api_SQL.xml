@@ -11,10 +11,10 @@
 		VALUES (#{userId}, 'Y', #{trackTime}, #{accuracy}, #{latitude}, #{longitude})
    	</insert>
    	
-   	<update id="updateDeviceId" parameterType="hashMap">
+   	<insert id="updateDeviceId" parameterType="hashMap">
    		/*apiDAO updateDeviceId 2021.09.05 ORW*/
 		INSERT INTO WR_FCM_MNG (USER_ID, DEVICE_ID) VALUES (#{userId}, #{deviceId})
 		ON DUPLICATE KEY
 		UPDATE USER_ID = #{userId}, DEVICE_ID = #{deviceId}
-   	</update>
+   	</insert>
 </mapper>
