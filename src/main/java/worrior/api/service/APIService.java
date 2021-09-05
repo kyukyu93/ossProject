@@ -20,4 +20,8 @@ public class APIService {
 	public void postTracking(HashMap hashMap) throws Exception {
 		apiDAO.postTracking(hashMap);
 	}
+	
+	public void updateDeviceId(HashMap hashMap) throws Exception {
+		apiDAO.updateDeviceId(hashMap);
+	}
 }

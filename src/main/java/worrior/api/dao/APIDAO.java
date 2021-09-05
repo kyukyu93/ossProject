@@ -15,5 +15,9 @@ public class APIDAO {
 	public void postTracking(HashMap<String, Object> hashMap) throws Exception {
 		sqlSession.insert("apiDAO.postTracking", hashMap);
 	}
+	
+	public void updateDeviceId(HashMap<String, Object> hashMap) throws Exception {
+		sqlSession.update("apiDAO.updateDeviceId", hashMap);
+	}
 		
 }

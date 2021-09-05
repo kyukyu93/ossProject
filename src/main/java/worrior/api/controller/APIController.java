@@ -126,4 +126,23 @@ public class APIController {
 		model.addAttribute("data", hashMap);
 		return "jsonView";
 	}
+	
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/connect{userId}", method = RequestMethod.GET)
+    public String connectUserId(@PathVariable String userId, HttpServletRequest req, HttpServletResponse res, Model model) throws Exception {
+		HashMap hashMap = new HashMap();
+		String deviceId = req.getParameter("deviceId");
+		try {
+			apiService.updateDeviceId(hashMap);
+			hashMap.put("code", "200");
+			hashMap.put("msg", "정상적으로 처리되었습니다");
+		}
+		catch (Exception e) {
+			hashMap.put("code", "500");
+			hashMap.put("msg", "서버가 응답하지 않습니다");
+			// TODO: handle exception
+		}
+		model.addAttribute("data", hashMap);
+		return "jsonView";
+	}
 }

@@ -7,6 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <link rel="stylesheet" type="text/css" href="/resources/worrior/css/common.css" />
 <script type="text/javascript" src="/resources/worrior/js/nav.js"></script>
+<script type="text/javascript" src="/resources/worrior/js/common.js"></script>
 <script type="text/javascript" src="/resources/worrior/js/jquery-3.5.1.js"></script>
 </head>
 <script type="text/javascript">
