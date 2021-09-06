@@ -17,7 +17,7 @@ public class APIDAO {
 	}
 	
 	public void updateDeviceId(HashMap<String, Object> hashMap) throws Exception {
-		sqlSession.update("apiDAO.updateDeviceId", hashMap);
+		sqlSession.insert("apiDAO.updateDeviceId", hashMap);
 	}
 		
 }

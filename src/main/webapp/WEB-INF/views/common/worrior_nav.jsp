@@ -38,6 +38,7 @@ function logout_callback(result) {
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="utils.jsp" flush="false" />
 	<div class="nav-bar">
 		<div class="nav-contents" id="nav-menu">
 		<div class="nav-brand"><a href="/worrior/home.do">내가 설마?</a></div>

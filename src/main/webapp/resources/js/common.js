@@ -20,23 +20,23 @@ get_ajax = function(requestUrl, parameter, functionCallBack){
 			}
 	    }
 	    ,beforeSend:function(){
-	    	//$('worrior_loading').fadeIn(200);
+	    	$('worrior_loading').fadeIn(200);
 	        
-	    	//$(".worrior_loading").fadeTo(1000,1);
-	    	//$('.worrior_loading').removeClass('hide_bg');
+	    	$(".worrior_loading").fadeTo(250,1);
+	    	$('.worrior_loading').removeClass('hide_bg');
 
-	    	$(".worrior_loading").fadeTo(1000, 1, function() {
+	    	$(".worrior_loading").fadeTo(250, 1, function() {
 	    		$('.worrior_loading').removeClass('hide_bg');
 	    		$('.worrior_loading').show();
 			});
 	    }
 	    ,complete:function(){
-	    	$(".worrior_loading").fadeTo(1000, 0, function() {
+	    	$(".worrior_loading").fadeTo(250, 0, function() {
 	    		$('.worrior_loading').addClass('hide_bg');
 	    		$('.worrior_loading').hide();
 			});
-	    	//$(".worrior_loading").fadeTo(1000,0);
-	    	//$('.worrior_loading').addClass('hide_bg');
+	    	$(".worrior_loading").fadeTo(250,0);
+	    	$('.worrior_loading').addClass('hide_bg');
 	    }
 	    ,error:function(e){
 	    }
@@ -61,23 +61,23 @@ request_ajax = function(requestUrl, parameter, functionCallBack){
 			}
 	    }
 	    ,beforeSend:function(){
-	    	//$('worrior_loading').fadeIn(200);
+	    	$('worrior_loading').fadeIn(200);
 	        
-	    	//$(".worrior_loading").fadeTo(1000,1);
-	    	//$('.worrior_loading').removeClass('hide_bg');
+	    	$(".worrior_loading").fadeTo(250,1);
+	    	$('.worrior_loading').removeClass('hide_bg');
 
-	    	$(".worrior_loading").fadeTo(1000, 1, function() {
+	    	$(".worrior_loading").fadeTo(250, 1, function() {
 	    		$('.worrior_loading').removeClass('hide_bg');
 	    		$('.worrior_loading').show();
 			});
 	    }
 	    ,complete:function(){
-	    	$(".worrior_loading").fadeTo(1000, 0, function() {
+	    	$(".worrior_loading").fadeTo(250, 0, function() {
 	    		$('.worrior_loading').addClass('hide_bg');
 	    		$('.worrior_loading').hide();
 			});
-	    	//$(".worrior_loading").fadeTo(1000,0);
-	    	//$('.worrior_loading').addClass('hide_bg');
+	    	$(".worrior_loading").fadeTo(250,0);
+	    	$('.worrior_loading').addClass('hide_bg');
 	    }
 	    ,error:function(e){
 	    }
