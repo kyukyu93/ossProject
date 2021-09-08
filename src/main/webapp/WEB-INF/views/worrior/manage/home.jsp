@@ -263,7 +263,7 @@ function fncSearch(pag) {
 				
 				<div class="mon4" style="float: left;width: 23%;display: inline-block;height: 100%;padding: 1%;background-color: cornsilk; cursor: pointer;">
 					<div style="display: inline-block; width: 100%;">
-						<div style="display: block; margin-bottom: 30px; font-weight: bold; font-size: 1.3em; float: left;">메세지 모니터링</div>
+						<div style="display: block; margin-bottom: 30px; font-weight: bold; font-size: 1.3em; float: left;">메시징 모니터링</div>
 						<div style="display: block; margin-bottom: 30px; font-weight: bold; font-size: 1.3em; float: right;">
 							<button>새로고침</button>
 						</div>
@@ -273,9 +273,9 @@ function fncSearch(pag) {
 							<thead>
 								<tr>
 									<th>총 건수</th>
-									<th>응답</th>
-									<th>미응답</th>
-									<th>응답률</th>
+									<th>정상</th>
+									<th>오류</th>
+									<th>전송률</th>
 								</tr>
 							</thead>
 							<tbody style="text-align: center;">

@@ -34,6 +34,22 @@ public class WorriorInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		SessionUtils session = new SessionUtils();
+		String strPath = request.getRequestURI();
+		String userAgent = request.getHeader("User-Agent").toUpperCase();
+		log.info("1111111111 " + strPath);
+		if (userAgent.indexOf("MOBILE") > -1) {
+			log.info("!!!!!!!");
+			if (userAgent.indexOf("PHONE") == -1) {
+				//return IS_MOBILE;
+				
+				strPath = strPath.replace("worrior/","mobile/");
+				log.info("##########" + strPath);
+				modelAndView.setViewName(strPath);
+			}
+			else {}
+		} else {
+			
+		}
 		
 		if("".equals(session.getUserChk()) || session.getUserChk() == null || "".equals(session.getUserId()) || session.getUserId() == null) {
 			session.setUserChk("0");

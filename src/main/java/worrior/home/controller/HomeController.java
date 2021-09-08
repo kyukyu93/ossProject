@@ -26,10 +26,15 @@ public class HomeController {
 
 	@RequestMapping(value = {"/home.do", "/mobile/home.do"})
 	public ModelAndView getMainView(HttpServletRequest req, HttpServletResponse res, Model model, ModelAndView modelAndView) throws Exception {
-		
+		SessionUtils session = new SessionUtils();
 		if(req.getServletPath().equals("/home.do")) {
 			log.info("/home");
 	    }else if(req.getServletPath().equals("/mobile/home.do")) {
+	    	if("".equals(session.getUserId()) || session.getUserId() == null) {
+				//return("member/login");
+//	    		model.addAttribute("member/login");
+	    		modelAndView.setViewName("member/login");
+			}
 	    	log.info("/mobile/home");
 	    }
 	    else {
