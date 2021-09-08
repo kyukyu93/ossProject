@@ -128,7 +128,7 @@ public class APIController {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	@RequestMapping(value = "/connect{userId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/connect{userId}", method = RequestMethod.PUT)
     public String connectUserId(@PathVariable String userId, HttpServletRequest req, HttpServletResponse res, Model model) throws Exception {
 		HashMap hashMap = new HashMap();
 		String deviceId = req.getParameter("deviceId");
